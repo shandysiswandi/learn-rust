@@ -1,7 +1,7 @@
+mod arrays;
 mod conditional;
 mod constant;
 mod looping;
-mod matches;
 mod print;
 mod strings;
 mod types;
@@ -15,5 +15,5 @@ fn main() {
     constant::run();
     conditional::run();
     looping::run();
-    matches::run();
+    arrays::run();
 }
