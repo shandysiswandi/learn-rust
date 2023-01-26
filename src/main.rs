@@ -3,7 +3,9 @@ mod conditional;
 mod constant;
 mod looping;
 mod print;
+mod slices;
 mod strings;
+mod tuples;
 mod types;
 mod variable;
 
@@ -16,4 +18,6 @@ fn main() {
     conditional::run();
     looping::run();
     arrays::run();
+    slices::run();
+    tuples::run();
 }
