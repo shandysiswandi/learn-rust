@@ -1,6 +1,7 @@
 mod arrays;
 mod conditional;
 mod constant;
+mod function;
 mod looping;
 mod print;
 mod slices;
@@ -22,4 +23,5 @@ fn main() {
     slices::run();
     tuples::run();
     vectors::run();
+    function::run();
 }
