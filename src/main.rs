@@ -8,6 +8,7 @@ mod strings;
 mod tuples;
 mod types;
 mod variable;
+mod vectors;
 
 fn main() {
     print::run();
@@ -20,4 +21,5 @@ fn main() {
     arrays::run();
     slices::run();
     tuples::run();
+    vectors::run();
 }
