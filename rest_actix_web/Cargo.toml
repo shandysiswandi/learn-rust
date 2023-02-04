@@ -5,11 +5,25 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "rest_actix_web"
+path = "src/main.rs"
+
+[lib]
+name = "rest_actix_web"
+path = "src/lib.rs"
+
 [dependencies]
 actix-web = "4.3.0"
 anyhow = "1.0.68"
+async-trait = "0.1.64"
 dotenv = "0.15.0"
 serde = "1.0.152"
 serde_derive = "1.0.152"
 serde_json = "1.0.91"
 sqlx = { version = "0.6", features = [ "runtime-actix-native-tls" , "mysql" ] }
+
+[dev-dependencies]
+actix-rt = "2.8.0"
+reqwest = "0.11.14"
+tokio = "1.25.0"
