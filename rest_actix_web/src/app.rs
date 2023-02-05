@@ -50,5 +50,6 @@ fn routes(svc_config: &mut web::ServiceConfig) {
         .route("/todos/{id}", web::get().to(todo::todo_by_id))
         .route("/todos", web::post().to(todo::create_todo))
         .route("/todos/{id}", web::put().to(todo::update_todo))
-        .route("/todos/{id}", web::delete().to(todo::delete_todo));
+        .route("/todos/{id}", web::delete().to(todo::delete_todo))
+        .default_service(web::to(|| root::no_route()));
 }
