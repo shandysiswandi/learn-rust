@@ -1,7 +1,4 @@
-use crate::model::{
-    error::UError,
-    notification::{FetchNotification, Notification},
-};
+use crate::model::{FetchNotification, Notification, UError};
 use async_trait::async_trait;
 
 #[async_trait]

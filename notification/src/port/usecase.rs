@@ -1,7 +1,4 @@
-use crate::model::{
-    error::UError,
-    notification::{FilterNotification, Notification},
-};
+use crate::model::{FilterNotification, Notification, UError};
 use async_trait::async_trait;
 
 #[async_trait]

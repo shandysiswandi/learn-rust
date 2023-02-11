@@ -1,10 +1,7 @@
 use crate::{
-    model::{
-        error::UError,
-        notification::{FetchNotification, FilterNotification, Notification},
-    },
-    port::database::Database,
-    port::usecase::Usecase,
+    model::{FetchNotification, FilterNotification, Notification, UError},
+    port::Database,
+    port::Usecase,
 };
 use async_trait::async_trait;
 

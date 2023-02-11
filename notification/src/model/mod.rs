@@ -1,2 +1,5 @@
-pub mod error;
-pub mod notification;
+mod error;
+mod notification;
+
+pub use error::*;
+pub use notification::*;
