@@ -1,3 +1,5 @@
+#![allow(clippy::all)]
+
 pub fn run() {
   println!("===== Print to Console =====");
 
