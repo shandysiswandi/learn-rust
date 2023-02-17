@@ -1,3 +1,9 @@
 [workspace]
-
-members = [ "basic", "rest_actix_web"]
+members = [ 
+    "basic", 
+    "rest_actix_web", 
+    "rest_axum", 
+    "notification", 
+    "repo_sqlx",
+    "repo_native",
+]
