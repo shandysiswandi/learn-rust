@@ -1,0 +1,10 @@
+[package]
+name = "repo_native"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.64"
+mysql = "23.0.1"
+notification = { path = "../notification" }
+postgres = "0.19.4"
