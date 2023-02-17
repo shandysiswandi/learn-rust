@@ -12,16 +12,16 @@ mod variable;
 mod vectors;
 
 fn main() {
-    print::run();
-    variable::run();
-    types::run();
-    strings::run();
-    constant::run();
-    conditional::run();
-    looping::run();
-    arrays::run();
-    slices::run();
-    tuples::run();
-    vectors::run();
-    function::run();
+  print::run();
+  variable::run();
+  types::run();
+  strings::run();
+  constant::run();
+  conditional::run();
+  looping::run();
+  arrays::run();
+  slices::run();
+  tuples::run();
+  vectors::run();
+  function::run();
 }
