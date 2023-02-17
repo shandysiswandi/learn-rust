@@ -1,5 +1,5 @@
-use crate::model::api::ErrorResponseJson;
-use actix_web::HttpResponse;
+use crate::AppState;
+use actix_web::{web, HttpResponse};
 
 pub async fn index() -> HttpResponse {
     HttpResponse::Ok().body("Hello rust!")
@@ -9,10 +9,20 @@ pub async fn health() -> HttpResponse {
     HttpResponse::Ok().finish()
 }
 
-pub async fn no_route() -> HttpResponse {
-    HttpResponse::NotFound().json(ErrorResponseJson {
-        message: "route not found".to_string(),
-    })
+pub async fn fetch_notification(_deps: web::Data<AppState>) -> HttpResponse {
+    todo!()
+}
+
+pub async fn find_notification(_deps: web::Data<AppState>) -> HttpResponse {
+    todo!()
+}
+
+pub async fn count_unread_notification(_deps: web::Data<AppState>) -> HttpResponse {
+    todo!()
+}
+
+pub async fn read_notification(_deps: web::Data<AppState>) -> HttpResponse {
+    todo!()
 }
 
 #[cfg(test)]
@@ -43,20 +53,5 @@ mod unit_test {
 
         //  Assert
         assert_eq!(resp.status(), http::StatusCode::OK);
-    }
-
-    #[actix_web::test]
-    async fn no_route_ok() {
-        // Arrange
-        let resp = no_route().await;
-
-        // Act
-        let expect_status = resp.status();
-        let bytes = body::to_bytes(resp.into_body()).await.unwrap();
-        let expect_body = std::str::from_utf8(&bytes).unwrap();
-
-        //  Assert
-        assert_eq!(expect_status, http::StatusCode::NOT_FOUND);
-        assert_eq!(expect_body, "{\"message\":\"route not found\"}");
     }
 }

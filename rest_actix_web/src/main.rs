@@ -1,22 +1,20 @@
-use rest_actix_web::app;
+use rest_actix_web::run;
 use std::{env, io::Result, net::TcpListener};
 
 #[actix_web::main]
 async fn main() -> Result<()> {
     dotenv::dotenv().expect("Failed to read .env file");
 
-    let host: String = env::var("APP_HOST").unwrap_or_default();
-    let port: String = env::var("APP_PORT").unwrap_or_default();
-    let address: String = format!("{host}:{port}");
+    let address = format!(
+        "{}:{}",
+        env::var("APP_HOST").unwrap(),
+        env::var("APP_PORT").unwrap()
+    );
+    println!("server running on {}", address);
 
-    match TcpListener::bind(address) {
+    match TcpListener::bind(&address) {
         Ok(listener) => {
-            println!(
-                "server running on port {}",
-                listener.local_addr().unwrap().port()
-            );
-
-            app::run(listener)?.await?;
+            run(listener)?.await?;
             Ok(())
         }
         Err(e) => Err(e),
