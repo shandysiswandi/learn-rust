@@ -1,7 +1,0 @@
-[package]
-name = "basic"
-version = "0.1.0"
-authors = ["shandysiswandi <shandysiswandi@gmail.com>"]
-edition = "2021"
-
-[dependencies]

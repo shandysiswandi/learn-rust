@@ -11,7 +11,7 @@ mod types;
 mod variable;
 mod vectors;
 
-fn main() {
+pub fn run() {
   print::run();
   variable::run();
   types::run();

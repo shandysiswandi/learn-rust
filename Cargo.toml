@@ -1,9 +1,7 @@
-[workspace]
-members = [ 
-    "basic", 
-    "rest_actix_web", 
-    "rest_axum", 
-    "notification", 
-    "repo_sqlx",
-    "repo_native",
-]
+[package]
+name = "learn-rust"
+version = "0.1.0"
+authors = ["shandysiswandi <shandysiswandi@gmail.com>"]
+edition = "2021"
+
+[dependencies]
