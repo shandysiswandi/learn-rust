@@ -31,5 +31,14 @@ GET {{HOST}}/html HTTP/1.1
 GET {{HOST}}/graceful-shutdown HTTP/1.1
 ###
 ###
+### validation is route to test request body and validation library
+POST {{HOST}}/validation HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "a"
+}
+###
+###
 ### not-found path is for testing that is no route path found in the server
 GET {{HOST}}/not-found HTTP/1.1

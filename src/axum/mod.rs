@@ -1,7 +1,8 @@
 mod controller;
-use controller as h;
+pub mod model;
 
 use axum::{routing, Router};
+use controller as h;
 
 pub fn init() -> Router {
   let root = Router::new()
@@ -10,8 +11,9 @@ pub fn init() -> Router {
     .route("/status-code", routing::get(h::status_code))
     .route("/unit-tuple", routing::get(h::unit_tuple))
     .route("/html", routing::get(h::html))
+    .route("/json", routing::get(h::json))
     .route("/graceful-shutdown", routing::get(h::graceful_shutdown))
-    .route("/json", routing::get(h::json));
+    .route("/validation", routing::post(h::validation));
 
   Router::new().nest("/", root).fallback(h::fallback)
 }
