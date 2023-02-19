@@ -6,13 +6,13 @@
 //!
 
 use super::model::NameInput;
-use axum::{http::StatusCode, response::Html, Json};
+use axum::{extract::Path, http::StatusCode, response::Html, Json};
 use std::collections::HashMap;
 use tokio::time::{sleep, Duration};
 use validator::Validate;
 
-pub async fn str() -> &'static str {
-  "Hello from string literal"
+pub async fn path_variable(Path(name): Path<String>) -> String {
+  format!("Hello {}", name)
 }
 
 pub async fn string() -> String {

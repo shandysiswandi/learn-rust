@@ -6,7 +6,7 @@ use controller as h;
 
 pub fn init() -> Router {
   let root = Router::new()
-    .route("/str", routing::get(h::str))
+    .route("/:name", routing::get(h::path_variable))
     .route("/string", routing::get(h::string))
     .route("/status-code", routing::get(h::status_code))
     .route("/unit-tuple", routing::get(h::unit_tuple))
