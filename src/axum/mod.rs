@@ -13,5 +13,5 @@ pub fn init() -> Router {
     .route("/graceful-shutdown", routing::get(h::graceful_shutdown))
     .route("/json", routing::get(h::json));
 
-  Router::new().nest("/", root)
+  Router::new().nest("/", root).fallback(h::fallback)
 }
