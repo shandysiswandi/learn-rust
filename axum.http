@@ -1,33 +1,35 @@
+### environtment variables
 @HOST = http://localhost:8080
 
+###
+###
+### string or text response
 GET {{HOST}}/str HTTP/1.1
-
 ###
-
+###
+### string or text response
 GET {{HOST}}/string HTTP/1.1
-
 ###
-
+###
+### empty body response with explicite StatusCode
 GET {{HOST}}/status-code HTTP/1.1
-
 ###
-
+###
+### empty body response
 GET {{HOST}}/unit-tuple HTTP/1.1
-
 ###
-
+###
+### json response
 GET {{HOST}}/json HTTP/1.1
-
 ###
-
+###
+### html response
 GET {{HOST}}/html HTTP/1.1
-
 ###
-
+###
+### graceful shutdown after send request we must kill the server with ctrl+c
 GET {{HOST}}/graceful-shutdown HTTP/1.1
-
 ###
-
+###
+### not-found path is for testing that is no route path found in the server
 GET {{HOST}}/not-found HTTP/1.1
-
-###
