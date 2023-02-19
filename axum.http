@@ -1,0 +1,25 @@
+@HOST = http://localhost:8080
+
+GET {{HOST}}/str HTTP/1.1
+
+###
+
+GET {{HOST}}/string HTTP/1.1
+
+###
+
+GET {{HOST}}/status-code HTTP/1.1
+
+###
+
+GET {{HOST}}/unit-tuple HTTP/1.1
+
+###
+
+GET {{HOST}}/json HTTP/1.1
+
+###
+
+GET {{HOST}}/html HTTP/1.1
+
+###
