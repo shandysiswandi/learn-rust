@@ -1,15 +1,17 @@
 mod controller;
+use controller as h;
 
 use axum::{routing, Router};
 
 pub fn init() -> Router {
   let root = Router::new()
-    .route("/str", routing::get(controller::str))
-    .route("/string", routing::get(controller::string))
-    .route("/status-code", routing::get(controller::status_code))
-    .route("/unit-tuple", routing::get(controller::unit_tuple))
-    .route("/html", routing::get(controller::html))
-    .route("/json", routing::get(controller::json));
+    .route("/str", routing::get(h::str))
+    .route("/string", routing::get(h::string))
+    .route("/status-code", routing::get(h::status_code))
+    .route("/unit-tuple", routing::get(h::unit_tuple))
+    .route("/html", routing::get(h::html))
+    .route("/graceful-shutdown", routing::get(h::graceful_shutdown))
+    .route("/json", routing::get(h::json));
 
   Router::new().nest("/", root)
 }

@@ -23,3 +23,7 @@ GET {{HOST}}/json HTTP/1.1
 GET {{HOST}}/html HTTP/1.1
 
 ###
+
+GET {{HOST}}/graceful-shutdown HTTP/1.1
+
+###

@@ -6,6 +6,7 @@
 //!
 
 use axum::{http::StatusCode, response::Html, Json};
+use tokio::time::{sleep, Duration};
 
 pub async fn str() -> &'static str {
   "Hello from string literal"
@@ -29,4 +30,10 @@ pub async fn html() -> Html<&'static str> {
 
 pub async fn json() -> Json<Vec<&'static str>> {
   Json(vec!["satu", "dua", "tiga"])
+}
+
+pub async fn graceful_shutdown() -> &'static str {
+  sleep(Duration::from_secs(10)).await;
+
+  "server graceful shutdown"
 }
