@@ -20,12 +20,6 @@ pub async fn path_variable(Path(name): Path<String>) -> impl IntoResponse {
   format!("Hello {}", name)
 }
 
-pub async fn string() -> impl IntoResponse {
-  "Hello from string".to_owned()
-}
-
-pub async fn unit_tuple() -> impl IntoResponse {}
-
 pub async fn status_code() -> impl IntoResponse {
   StatusCode::OK
 }

@@ -7,16 +7,8 @@
 GET {{HOST}}/path-variable HTTP/1.1
 ###
 ###
-### string or text response
-GET {{HOST}}/string HTTP/1.1
-###
-###
 ### empty body response with explicite StatusCode
 GET {{HOST}}/status-code HTTP/1.1
-###
-###
-### empty body response
-GET {{HOST}}/unit-tuple HTTP/1.1
 ###
 ###
 ### json response
