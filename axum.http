@@ -32,5 +32,14 @@ Content-Type: application/json
 }
 ###
 ###
+### reject is route to custom when request body is error
+POST {{HOST}}/reject HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": ""
+}
+###
+###
 ### not-found path is for testing that is no route path found in the server
 GET {{HOST}}/not-found HTTP/1.1

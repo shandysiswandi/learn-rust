@@ -5,13 +5,14 @@
 //!
 //!
 
-use super::model::NameInput;
+use super::{error::ApiError, model::NameInput};
 use axum::{
   extract::Path,
   http::StatusCode,
   response::{Html, IntoResponse},
   Json,
 };
+use axum_extra::extract::WithRejection;
 use std::collections::HashMap;
 use tokio::time::{sleep, Duration};
 use validator::Validate;
@@ -43,6 +44,13 @@ pub async fn validation(Json(input): Json<NameInput>) -> impl IntoResponse {
   };
 
   (StatusCode::OK, format!("your input name: {}", input.name))
+}
+
+pub async fn with_rejection(
+  // The second constructor argument is not meaningful and can be safely ignored
+  WithRejection(Json(_value), _): WithRejection<Json<NameInput>, ApiError>,
+) -> impl IntoResponse {
+  Json(vec!["satu", "dua", "tiga"])
 }
 
 pub async fn fallback() -> impl IntoResponse {

@@ -1,4 +1,5 @@
 mod controller;
+mod error;
 mod middleware;
 pub mod model;
 
@@ -11,6 +12,7 @@ pub fn init() -> Router {
     .route("/status-code", routing::get(h::status_code))
     .route("/html", routing::get(h::html))
     .route("/json", routing::get(h::json))
+    .route("/reject", routing::post(h::with_rejection))
     .route("/graceful-shutdown", routing::get(h::graceful_shutdown))
     .route("/validation", routing::post(h::validation));
 
