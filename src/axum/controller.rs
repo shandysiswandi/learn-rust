@@ -10,7 +10,7 @@ use axum::{
   extract::Path,
   http::StatusCode,
   response::{Html, IntoResponse},
-  Json,
+  Form, Json,
 };
 use axum_extra::extract::WithRejection;
 use std::collections::HashMap;
@@ -18,6 +18,7 @@ use tokio::time::{sleep, Duration};
 use validator::Validate;
 
 pub async fn path_variable(Path(name): Path<String>) -> impl IntoResponse {
+  tracing::info!("listening on {}", name);
   format!("Hello {}", name)
 }
 
@@ -43,6 +44,10 @@ pub async fn validation(Json(input): Json<NameInput>) -> impl IntoResponse {
     return (StatusCode::BAD_REQUEST, "invalid argument".to_string());
   };
 
+  (StatusCode::OK, format!("your input name: {}", input.name))
+}
+
+pub async fn form(Form(input): Form<NameInput>) -> impl IntoResponse {
   (StatusCode::OK, format!("your input name: {}", input.name))
 }
 

@@ -1,7 +1,12 @@
 #[tokio::main]
 async fn main() {
+  dotenv::dotenv().ok();
+  tracing_subscriber::fmt::init();
+
   let app = learn_rust::axum::init();
   let addr = "[::]:8080".parse().unwrap();
+
+  tracing::info!("listening on {}", addr);
 
   axum::Server::bind(&addr)
     .serve(app.into_make_service())
