@@ -1,37 +1,68 @@
 ### environtment variables
 @HOST = http://localhost:8080
 
-###
-###
-### example of path variable
-GET {{HOST}}/path-variable HTTP/1.1
-###
-###
-### empty body response with explicite StatusCode
-GET {{HOST}}/status-code HTTP/1.1
-###
-###
+#################################################################################### start of crud
+### crud list
+GET {{HOST}}/crud HTTP/1.1
+
+### crud read
+GET {{HOST}}/crud/1 HTTP/1.1
+
+### crud create
+POST {{HOST}}/crud HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "nama todo"
+}
+
+### crud update partial
+PATCH {{HOST}}/crud/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "update nama todo"
+}
+
+### crud update
+PUT {{HOST}}/crud/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "update nama todo"
+}
+
+### crud delete
+DELETE {{HOST}}/crud/1 HTTP/1.1
+#################################################################################### end of crud
+
+#################################################################################### start of content-types
 ### json response
-GET {{HOST}}/json HTTP/1.1
-###
-###
+GET {{HOST}}/content-types/json HTTP/1.1
+
 ### html response
-GET {{HOST}}/html HTTP/1.1
-###
-###
-### graceful shutdown after send request we must kill the server with ctrl+c
-GET {{HOST}}/graceful-shutdown HTTP/1.1
-###
-###
-### validation is route to test request body and validation library
-POST {{HOST}}/validation HTTP/1.1
+GET {{HOST}}/content-types/html HTTP/1.1
+
+### form request
+POST {{HOST}}/content-types/form HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=kudanil
+
+### json request, validation is route to test request body and validation library
+POST {{HOST}}/content-types/validation HTTP/1.1
 Content-Type: application/json
 
 {
     "name": "a"
 }
-###
-###
+#################################################################################### end of content-types
+
+#################################################################################### start of root
+### graceful shutdown after send request we must kill the server with ctrl+c
+GET {{HOST}}/graceful-shutdown HTTP/1.1
+
+
 ### reject is route to custom when request body is error
 POST {{HOST}}/reject HTTP/1.1
 Content-Type: application/json
@@ -39,17 +70,9 @@ Content-Type: application/json
 {
     "key": ""
 }
-###
-###
-### not-found path is for testing that is no route path found in the server
-GET {{HOST}}/not-found HTTP/1.1
-###
-###
-###
-POST {{HOST}}/form HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
+#################################################################################### end of root
 
-name=kudanil
-###
-###
-###
+#################################################################################### start default fallback
+### not-found path is for testing that is no route path found in the server
+#################################################################################### end default fallback
+GET {{HOST}}/not-found HTTP/1.1
