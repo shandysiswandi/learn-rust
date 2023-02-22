@@ -13,11 +13,11 @@ use axum::{
   Form, Json,
 };
 use axum_extra::extract::WithRejection;
-use std::collections::HashMap;
+use serde_json::json;
 use tokio::time::{sleep, Duration};
 use validator::Validate;
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 pub async fn ct_html() -> impl IntoResponse {
   Html(r#"<h1>Hello from html</h1>"#)
@@ -39,7 +39,7 @@ pub async fn ct_form(Form(input): Form<NameInput>) -> impl IntoResponse {
   (StatusCode::OK, format!("your input name: {}", input.name))
 }
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 pub async fn crud_list() -> impl IntoResponse {
   format!("Hello crud list")
@@ -57,10 +57,7 @@ pub async fn crud_update(Path(id): Path<usize>, Json(input): Json<NameInput>) ->
   format!("Hello update todo({},{})", id, input.name)
 }
 
-pub async fn crud_partial_update(
-  Path(id): Path<usize>,
-  Json(input): Json<NameInput>,
-) -> impl IntoResponse {
+pub async fn crud_partial_update(Path(id): Path<usize>, Json(input): Json<NameInput>) -> impl IntoResponse {
   format!("Hello update todo({},{})", id, input.name)
 }
 
@@ -68,7 +65,7 @@ pub async fn crud_delete(Path(id): Path<usize>) -> impl IntoResponse {
   format!("Hello delete todo({})", id)
 }
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 pub async fn graceful_shutdown() -> impl IntoResponse {
   sleep(Duration::from_secs(5)).await;
@@ -82,11 +79,8 @@ pub async fn with_rejection(
   Json(vec!["satu", "dua", "tiga"])
 }
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 pub async fn fallback() -> impl IntoResponse {
-  Json(HashMap::from([(
-    "message".to_string(),
-    "route not found".to_string(),
-  )]))
+  Json(json!({ "message":"route not found" }))
 }
